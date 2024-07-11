@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node app-back.js"
+    "start": "npm run build && node app-back.js"
   },
   "keywords": [],
   "author": "",
