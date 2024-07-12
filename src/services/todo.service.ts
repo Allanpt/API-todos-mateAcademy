@@ -54,7 +54,7 @@ async function updateTodo(body: Todo, id: number) {
 
     return await prisma.todo.update({
       where: { id },
-      data: { completed: body.completed, createdAt: body.title },
+      data: { completed: body.completed, title: body.title },
     });
   } catch (error) {
     throw new Error(`Id DO NOT exist`);
