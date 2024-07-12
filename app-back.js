@@ -2,8 +2,10 @@
 const { todoRoute } = require('./dist/routes/todo.route.js')
 
 const express = require('express');
-
+const cors = require('cors');
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -16,7 +18,7 @@ app.use('*', (_, res) => {
   });
 });
 
-const port = 3030;
+const port = process.env.PORT || 3030;
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
