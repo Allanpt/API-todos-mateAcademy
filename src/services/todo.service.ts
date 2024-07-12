@@ -48,7 +48,7 @@ async function createTodo(body: Todo) {
 
 async function updateTodo(body: Todo, id: number) {
   try {
-    if (body.title !== undefined || body.userId !== undefined) {
+    if (body.userId !== undefined) {
       return null;
     }
 
