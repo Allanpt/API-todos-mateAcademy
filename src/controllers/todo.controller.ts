@@ -47,7 +47,7 @@ const updateTodo = async (req: Request, res: Response) => {
     const update = await todoService.updateTodo(req.body, Number(id));
 
     if(!update) {
-      return res.status(400).json({ message: `Payload (Request Body) should only contain 'completed' property.` });
+      return res.status(400).json({ message: `You could change ONLY 'completed' and 'title' property.` });
     }
 
     return res.status(200).json(update);
