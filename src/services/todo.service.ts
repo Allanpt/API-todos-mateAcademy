@@ -48,13 +48,27 @@ async function createTodo(body: Todo) {
 
 async function updateTodo(body: Todo, id: number) {
   try {
+
     if (body.userId !== undefined) {
       return null;
     }
 
+    const dataToUpdate: Partial<Todo> = {};
+    
+    if (body.title !== undefined) {
+      dataToUpdate.title = body.title;
+    }
+    if (body.completed !== undefined) {
+      dataToUpdate.completed = body.completed;
+    }
+
+    if (Object.keys(dataToUpdate).length === 0) {
+      throw new Error('No valid fields provided for update');
+    }
+
     return await prisma.todo.update({
       where: { id },
-      data: { completed: body.completed, title: body.title },
+      data: dataToUpdate,
     });
   } catch (error) {
     throw new Error(`Id DO NOT exist`);
